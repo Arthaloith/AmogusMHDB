@@ -1,13 +1,11 @@
 import 'package:amogus/models/category.dart';
 import 'package:amogus/models/weapon.dart';
-import 'package:amogus/pages/about.dart';
 import 'package:amogus/pages/ammo.dart';
 import 'package:amogus/pages/armor.dart';
 import 'package:amogus/pages/combo.dart';
 import 'package:amogus/pages/item.dart';
 import 'package:amogus/pages/map.dart';
 import 'package:amogus/pages/monster.dart';
-import 'package:amogus/pages/settings.dart';
 import 'package:amogus/pages/weapon.dart';
 import 'package:amogus/ui/leftDrawer.dart';
 import 'package:amogus/ui/rightDrawer.dart';

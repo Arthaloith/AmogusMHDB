@@ -76,6 +76,8 @@ flutter:
     - assets/icons/WeapRank/Switch_Axe/
     # Categories Icons
     - assets/icons/Categories/
+    # Gifs
+    - assets/gifs/
     # Misc
     - assets/icons/Misc_ui/
 

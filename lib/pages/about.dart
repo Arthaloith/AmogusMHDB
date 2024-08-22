@@ -7,16 +7,8 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          'About Us',
-          style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
+      appBar: appBar(),
+      backgroundColor: const Color(0xffF7F8F8),
       endDrawer: rightDrawer(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,6 +16,18 @@ class AboutPage extends StatelessWidget {
           aboutUs(),
         ],
       ),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: const Text(
+        'About Us',
+        style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.blue,
     );
   }
 
@@ -82,6 +86,7 @@ class AboutPage extends StatelessWidget {
               Text('+69420'),
             ],
           ),
+          Image.asset('assets/gifs/elite.gif'),
         ],
       ),
     );
