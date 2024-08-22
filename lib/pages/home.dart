@@ -1,12 +1,12 @@
 import 'package:amogus/models/category.dart';
 import 'package:amogus/models/weapon.dart';
-import 'package:amogus/pages/ammo.dart';
-import 'package:amogus/pages/armor.dart';
-import 'package:amogus/pages/combo.dart';
-import 'package:amogus/pages/item.dart';
-import 'package:amogus/pages/map.dart';
-import 'package:amogus/pages/monster.dart';
-import 'package:amogus/pages/weapon.dart';
+import 'package:amogus/pages/categories/ammo.dart';
+import 'package:amogus/pages/categories/armor.dart';
+import 'package:amogus/pages/categories/combo.dart';
+import 'package:amogus/pages/categories/item.dart';
+import 'package:amogus/pages/categories/map.dart';
+import 'package:amogus/pages/categories/monster.dart';
+import 'package:amogus/pages/categories/weapon.dart';
 import 'package:amogus/ui/leftDrawer.dart';
 import 'package:amogus/ui/rightDrawer.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
