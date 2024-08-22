@@ -1,4 +1,4 @@
-import 'package:amogus/pages/settings.dart';
+import 'package:amogus/ui/rightDrawer.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
@@ -7,73 +7,80 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text(
-            'About Us',
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          'About Us',
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        endDrawer: rightDrawer(context),
-        body: const Center(
-          child: Text(
-            'ABOUT US',
-            style: TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ));
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      endDrawer: rightDrawer(context),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          aboutUs(),
+        ],
+      ),
+    );
   }
 
-  Drawer rightDrawer(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+  Padding aboutUs() {
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Text('Extra Stuffs',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
+          Text(
+            'Welcome to my MonHun DB Flutter app!',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () async {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SettingsPage(),
-              ));
-            },
+          SizedBox(height: 20),
+          Text(
+            "Disclaimber: I haven't played monhun, what chu gonna do about it?",
+            style: TextStyle(fontSize: 16),
           ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About'),
-            onTap: () async {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => AboutPage(),
-              ));
-            },
+          SizedBox(height: 20),
+          Text(
+            'Our Team:',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          ListTile(
-            leading: const Icon(Icons.source),
-            title: const Text('Source'),
-            onTap: () async {
-              // const url = 'https://github.com/Arthaloith';
-              // launchURL(url);
-            },
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(
+                    'https://avatars.githubusercontent.com/u/44740753?v=4'),
+              ),
+              SizedBox(width: 10),
+              Text('Lilith Augustei Celestia < Literally the only person'),
+            ],
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Contact if you dare:',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.email),
+              SizedBox(width: 10),
+              Text('amogus@sus.lmao'),
+            ],
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.phone),
+              SizedBox(width: 10),
+              Text('+69420'),
+            ],
           ),
         ],
       ),

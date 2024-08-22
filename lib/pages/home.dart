@@ -9,6 +9,8 @@ import 'package:amogus/pages/map.dart';
 import 'package:amogus/pages/monster.dart';
 import 'package:amogus/pages/settings.dart';
 import 'package:amogus/pages/weapon.dart';
+import 'package:amogus/ui/leftDrawer.dart';
+import 'package:amogus/ui/rightDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:url_launcher/url_launcher.dart';
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         appBar: appBar(),
         backgroundColor: const Color(0xffF7F8F8),
         endDrawer: rightDrawer(context),
-        drawer: leftDrawer(),
+        drawer: leftDrawer(context),
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           _searchField(),
           const SizedBox(height: 30),
@@ -53,90 +55,6 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 30),
           _weaponsSection()
         ]));
-  }
-
-  Drawer leftDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: const [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Text('Info',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold)),
-            ),
-          ),
-          Text(
-              textAlign: TextAlign.center,
-              '1 An 2 An 3 An ',
-              style: TextStyle(color: Colors.black, fontSize: 20)),
-          Text(
-            textAlign: TextAlign.center,
-            '4 An 5 An 6 An ',
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Drawer rightDrawer(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Text('Extra Stuffs',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () async {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SettingsPage(),
-              ));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About'),
-            onTap: () async {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => AboutPage(),
-              ));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.source),
-            title: const Text('Source'),
-            onTap: () async {
-              // const url = 'https://github.com/Arthaloith';
-              // launchURL(url);
-            },
-          ),
-        ],
-      ),
-    );
   }
 
   Column _weaponsSection() {
