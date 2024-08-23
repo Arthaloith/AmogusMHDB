@@ -1,17 +1,21 @@
 import 'package:amogus/pages/about.dart';
 import 'package:amogus/pages/home.dart';
 import 'package:amogus/pages/settings.dart';
+import 'package:amogus/providers/themeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Widget rightDrawer(BuildContext context) {
-  // Your existing rightDrawer function code
+  final themeProvider = Provider.of<ThemeProvider>(context);
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        const DrawerHeader(
+        DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: themeProvider.currentTheme == AppTheme.light
+                ? Colors.blue
+                : Colors.black,
           ),
           child: Padding(
             padding: EdgeInsets.only(top: 30),
@@ -29,7 +33,7 @@ Widget rightDrawer(BuildContext context) {
           title: const Text('Home'),
           onTap: () async {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => const HomePage(),
             ));
           },
         ),
@@ -38,7 +42,7 @@ Widget rightDrawer(BuildContext context) {
           title: const Text('Settings'),
           onTap: () async {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SettingsPage(),
+              builder: (context) => const SettingsPage(),
             ));
           },
         ),
@@ -47,7 +51,7 @@ Widget rightDrawer(BuildContext context) {
           title: const Text('About'),
           onTap: () async {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => AboutPage(),
+              builder: (context) => const AboutPage(),
             ));
           },
         ),

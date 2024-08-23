@@ -7,7 +7,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       backgroundColor: const Color(0xffF7F8F8),
       endDrawer: rightDrawer(context),
       body: Column(
@@ -19,15 +19,21 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  AppBar appBar() {
+  AppBar appBar(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.blue,
       title: const Text(
         'About Us',
         style: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
       ),
-      centerTitle: true,
-      backgroundColor: Colors.blue,
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        color: Colors.white, // Change the color here
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
     );
   }
 
@@ -41,7 +47,7 @@ class AboutPage extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          Container(
+          const SizedBox(
             width: 300,
             child: Text(
               "Disclaimber: I haven't played monhun, what chu gonna do about it?",

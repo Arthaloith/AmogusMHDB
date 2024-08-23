@@ -7,11 +7,12 @@ import 'package:amogus/pages/categories/item.dart';
 import 'package:amogus/pages/categories/map.dart';
 import 'package:amogus/pages/categories/monster.dart';
 import 'package:amogus/pages/categories/weapon.dart';
+import 'package:amogus/providers/themeProvider.dart';
 import 'package:amogus/ui/leftDrawer.dart';
 import 'package:amogus/ui/rightDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,15 +25,6 @@ class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
   List<WeapModel> weaps = [];
 
-  // launchURL(String url) async {
-  //   var url = Uri.https('https://github.com/Arthaloith');
-  //   if (await canLaunchUrl(url)) {
-  //     launchURL(url.toString());
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
-
   void _getInitialInfo() {
     categories = CategoryModel.getCategories();
     weaps = WeapModel.getWeaps();
@@ -41,18 +33,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     _getInitialInfo();
-    return Scaffold(
-        appBar: appBar(),
-        backgroundColor: const Color(0xffF7F8F8),
-        endDrawer: rightDrawer(context),
-        drawer: leftDrawer(context),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          _searchField(),
-          const SizedBox(height: 30),
-          _categoriesSection(),
-          const SizedBox(height: 30),
-          _weaponsSection()
-        ]));
+    return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+      return Scaffold(
+          appBar: appBar(context),
+          endDrawer: rightDrawer(context),
+          drawer: leftDrawer(context),
+          body: Theme(
+            data: themeProvider.theme,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              _searchField(),
+              const SizedBox(height: 30),
+              _categoriesSection(),
+              const SizedBox(height: 30),
+              _weaponsSection()
+            ]),
+          ));
+    });
   }
 
   Column _weaponsSection() {
@@ -60,15 +57,14 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: EdgeInsets.only(left: 20.0),
           child: Text(
             'Recommended sections',
-            style: TextStyle(
-                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
-        SizedBox(height: 20),
-        Container(
+        const SizedBox(height: 20),
+        SizedBox(
             height: 240,
             child: ListView.separated(
                 itemBuilder: (context, index) {
@@ -88,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 weaps[index].name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
@@ -109,12 +105,8 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Text(
-                                  weaps[index].rarity.toString() +
-                                      '★' +
-                                      ' | ' +
-                                      weaps[index].atk.toString() +
-                                      ' ATK',
-                                  style: TextStyle(
+                                  '${weaps[index].rarity}★ | ${weaps[index].atk} ATK',
+                                  style: const TextStyle(
                                     color: Colors.blueGrey,
                                     fontWeight: FontWeight.bold,
                                   )),
@@ -123,69 +115,68 @@ class _HomePageState extends State<HomePage> {
                           Container(
                             width: 130,
                             height: 45,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  weaps[index].viewIsSelected
+                                      ? const Color(0xff9DCEFF)
+                                      : Colors.transparent,
+                                  weaps[index].viewIsSelected
+                                      ? const Color(0xff92A3FD)
+                                      : Colors.transparent,
+                                ]),
+                                borderRadius: BorderRadius.circular(50)),
                             child: Center(
                                 child: Text(
                               'View',
                               style: TextStyle(
                                   color: weaps[index].viewIsSelected
                                       ? Colors.white
-                                      : Color(0xffC58BF2),
+                                      : const Color(0xffC58BF2),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             )),
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  weaps[index].viewIsSelected
-                                      ? Color(0xff9DCEFF)
-                                      : Colors.transparent,
-                                  weaps[index].viewIsSelected
-                                      ? Color(0xff92A3FD)
-                                      : Colors.transparent,
-                                ]),
-                                borderRadius: BorderRadius.circular(50)),
                           )
                         ],
                       ));
                 },
-                separatorBuilder: (context, index) => SizedBox(
+                separatorBuilder: (context, index) => const SizedBox(
                       width: 25,
                     ),
                 itemCount: weaps.length,
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 20, right: 20)))
+                padding: const EdgeInsets.only(left: 20, right: 20)))
       ],
     );
   }
 
   Column _categoriesSection() {
     final pageMap = {
-      0: WeaponsPage(),
-      1: ArmorsPage(),
-      2: CombosPage(),
-      3: ItemsPage(),
-      4: MonstersPage(),
-      5: AmmosPage(),
-      6: MapsPage()
+      0: const WeaponsPage(),
+      1: const ArmorsPage(),
+      2: const CombosPage(),
+      3: const ItemsPage(),
+      4: const MonstersPage(),
+      5: const AmmosPage(),
+      6: const MapsPage()
     };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: EdgeInsets.only(left: 20.0),
           child: Text(
             'Categories',
-            style: TextStyle(
-                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
-        SizedBox(height: 20),
-        Container(
+        const SizedBox(height: 20),
+        SizedBox(
             height: 120,
             child: ListView.separated(
               itemCount: categories.length,
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(left: 20, right: 20),
-              separatorBuilder: (context, index) => SizedBox(width: 25),
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              separatorBuilder: (context, index) => const SizedBox(width: 25),
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -206,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           width: 50,
                           height: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.circle,
                           ),
@@ -218,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           categories[index].name,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontWeight: FontWeight.normal),
@@ -235,7 +226,7 @@ class _HomePageState extends State<HomePage> {
 
   Container _searchField() {
     return Container(
-      margin: EdgeInsets.only(top: 40, left: 20, right: 20),
+      margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.11),
@@ -247,20 +238,20 @@ class _HomePageState extends State<HomePage> {
         decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
-            contentPadding: EdgeInsets.all(15),
+            contentPadding: const EdgeInsets.all(15),
             hintText: 'Seach something...',
-            hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+            hintStyle: const TextStyle(color: Colors.grey, fontSize: 14),
             prefixIcon: Padding(
               padding: const EdgeInsets.all(12),
               child: SvgPicture.asset('assets/icons/search.svg'),
             ),
-            suffixIcon: Container(
+            suffixIcon: SizedBox(
               width: 100,
               child: IntrinsicHeight(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: Colors.black,
                       indent: 10,
                       endIndent: 10,
@@ -281,13 +272,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AppBar appBar() {
+  AppBar appBar(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return AppBar(
       title: Text("Amogus's MonHun DB",
           style: TextStyle(
-              color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold)),
+            color: themeProvider.currentTheme == AppTheme.light
+                ? Colors.white
+                : Colors.white,
+          )),
       centerTitle: true,
-      backgroundColor: Colors.blue,
+      backgroundColor: themeProvider.currentTheme == AppTheme.light
+          ? Colors.blue
+          : Colors.black,
       elevation: 0.0,
       // Hide drawer hamburger button
       automaticallyImplyLeading: false,
@@ -298,15 +295,15 @@ class _HomePageState extends State<HomePage> {
             Scaffold.of(context).openDrawer();
           },
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             alignment: Alignment.center,
             width: 37,
-            child: SvgPicture.asset('assets/icons/info.svg',
-                width: 30, height: 30),
             decoration: BoxDecoration(
-              color: Color(0xffF7F8F8),
+              color: const Color(0xffF7F8F8),
               borderRadius: BorderRadius.circular(10),
             ),
+            child: SvgPicture.asset('assets/icons/info.svg',
+                width: 30, height: 30),
           ),
         );
       }),
@@ -318,15 +315,15 @@ class _HomePageState extends State<HomePage> {
               Scaffold.of(context).openEndDrawer();
             },
             child: Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               alignment: Alignment.center,
               width: 37,
-              child: SvgPicture.asset('assets/icons/dots.svg',
-                  width: 20, height: 20),
               decoration: BoxDecoration(
-                color: Color(0xffF7F8F8),
+                color: const Color(0xffF7F8F8),
                 borderRadius: BorderRadius.circular(10),
               ),
+              child: SvgPicture.asset('assets/icons/dots.svg',
+                  width: 20, height: 20),
             ),
           );
         }),
