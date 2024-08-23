@@ -1,7 +1,7 @@
 import 'package:amogus/pages/about.dart';
 import 'package:amogus/pages/home.dart';
 import 'package:amogus/pages/settings.dart';
-import 'package:amogus/providers/themeProvider.dart';
+import 'package:amogus/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ Widget rightDrawer(BuildContext context) {
                 ? Colors.blue
                 : Colors.black,
           ),
-          child: Padding(
+          child: const Padding(
             padding: EdgeInsets.only(top: 30),
             child: Text('Extra Stuffs',
                 textAlign: TextAlign.center,

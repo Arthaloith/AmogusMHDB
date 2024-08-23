@@ -1,0 +1,12 @@
+{
+  "@@locale": "vi",
+  "helloWorld": "Xin chào thế giới",
+  "welcomeMessage": "Chào mừng bạn đến với ứng dụng của chúng tôi",
+  "ammo": "Đạn",
+  "armor": "Giáp",
+  "combo": "Bộ combo",
+  "item": "Vật phẩm",
+  "map": "Bản đồ",
+  "monster": "Quái vật",
+  "weapon": "Vũ khí"
+}

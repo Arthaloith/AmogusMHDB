@@ -7,9 +7,11 @@ import 'package:amogus/pages/categories/item.dart';
 import 'package:amogus/pages/categories/map.dart';
 import 'package:amogus/pages/categories/monster.dart';
 import 'package:amogus/pages/categories/weapon.dart';
-import 'package:amogus/providers/themeProvider.dart';
-import 'package:amogus/ui/leftDrawer.dart';
-import 'package:amogus/ui/rightDrawer.dart';
+import 'package:amogus/providers/theme_provider.dart';
+import 'package:amogus/ui/app_bar.dart';
+import 'package:amogus/ui/left_drawer.dart';
+import 'package:amogus/ui/right_drawer.dart';
+import 'package:amogus/ui/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -35,14 +37,14 @@ class _HomePageState extends State<HomePage> {
     _getInitialInfo();
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return Scaffold(
-          appBar: appBar(context),
+          appBar: customAppBar(context, "Amogus's MonHun DB", isHome: true),
           endDrawer: rightDrawer(context),
           drawer: leftDrawer(context),
           body: Theme(
             data: themeProvider.theme,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _searchField(),
+              const SearchField(),
               const SizedBox(height: 30),
               _categoriesSection(),
               const SizedBox(height: 30),
@@ -57,10 +59,13 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left: 20.0),
           child: Text(
             'Recommended sections',
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(height: 20),
@@ -95,12 +100,12 @@ class _HomePageState extends State<HomePage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(weaps[index].sharpness_r),
-                                    SvgPicture.asset(weaps[index].sharpness_o),
-                                    SvgPicture.asset(weaps[index].sharpness_y),
-                                    SvgPicture.asset(weaps[index].sharpness_g),
-                                    SvgPicture.asset(weaps[index].sharpness_b),
-                                    SvgPicture.asset(weaps[index].sharpness_w),
+                                    SvgPicture.asset(weaps[index].sharpnessR),
+                                    SvgPicture.asset(weaps[index].sharpnessO),
+                                    SvgPicture.asset(weaps[index].sharpnessY),
+                                    SvgPicture.asset(weaps[index].sharpnessG),
+                                    SvgPicture.asset(weaps[index].sharpnessB),
+                                    SvgPicture.asset(weaps[index].sharpnessW),
                                   ],
                                 ),
                               ),
@@ -153,7 +158,7 @@ class _HomePageState extends State<HomePage> {
     final pageMap = {
       0: const WeaponsPage(),
       1: const ArmorsPage(),
-      2: const CombosPage(),
+      2: CombosPage(),
       3: const ItemsPage(),
       4: const MonstersPage(),
       5: const AmmosPage(),
@@ -163,10 +168,13 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left: 20.0),
           child: Text(
             'Categories',
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(height: 20),
@@ -220,113 +228,6 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ))
-      ],
-    );
-  }
-
-  Container _searchField() {
-    return Container(
-      margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.11),
-          spreadRadius: 0.0,
-          blurRadius: 40,
-        ),
-      ]),
-      child: TextField(
-        decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: const EdgeInsets.all(15),
-            hintText: 'Seach something...',
-            hintStyle: const TextStyle(color: Colors.grey, fontSize: 14),
-            prefixIcon: Padding(
-              padding: const EdgeInsets.all(12),
-              child: SvgPicture.asset('assets/icons/search.svg'),
-            ),
-            suffixIcon: SizedBox(
-              width: 100,
-              child: IntrinsicHeight(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const VerticalDivider(
-                      color: Colors.black,
-                      indent: 10,
-                      endIndent: 10,
-                      thickness: 0.2,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: SvgPicture.asset('assets/icons/filter.svg'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide.none)),
-      ),
-    );
-  }
-
-  AppBar appBar(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    return AppBar(
-      title: Text("Amogus's MonHun DB",
-          style: TextStyle(
-            color: themeProvider.currentTheme == AppTheme.light
-                ? Colors.white
-                : Colors.white,
-          )),
-      centerTitle: true,
-      backgroundColor: themeProvider.currentTheme == AppTheme.light
-          ? Colors.blue
-          : Colors.black,
-      elevation: 0.0,
-      // Hide drawer hamburger button
-      automaticallyImplyLeading: false,
-      // Info button
-      leading: Builder(builder: (context) {
-        return GestureDetector(
-          onTap: () {
-            Scaffold.of(context).openDrawer();
-          },
-          child: Container(
-            margin: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            width: 37,
-            decoration: BoxDecoration(
-              color: const Color(0xffF7F8F8),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: SvgPicture.asset('assets/icons/info.svg',
-                width: 30, height: 30),
-          ),
-        );
-      }),
-      // menu button
-      actions: [
-        Builder(builder: (context) {
-          return GestureDetector(
-            onTap: () {
-              Scaffold.of(context).openEndDrawer();
-            },
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              alignment: Alignment.center,
-              width: 37,
-              decoration: BoxDecoration(
-                color: const Color(0xffF7F8F8),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SvgPicture.asset('assets/icons/dots.svg',
-                  width: 20, height: 20),
-            ),
-          );
-        }),
       ],
     );
   }

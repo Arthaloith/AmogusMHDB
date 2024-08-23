@@ -1,4 +1,6 @@
-import 'package:amogus/providers/themeProvider.dart';
+import 'package:amogus/providers/locale_provider.dart';
+import 'package:amogus/providers/theme_provider.dart';
+import 'package:amogus/ui/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,19 +15,19 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
-      body:
-          Container(padding: EdgeInsets.all(10), child: settingsList(context)),
+      appBar: customAppBar(context, 'Settings'),
+      body: Container(
+          padding: const EdgeInsets.all(10), child: settingsList(context)),
     );
   }
 
   ListView settingsList(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        Row(children: [
+        const Row(children: [
           Icon(
             Icons.settings,
             color: Colors.blue,
@@ -41,27 +43,29 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: Colors.blueGrey),
           )
         ]),
-        Divider(height: 20, thickness: 1, color: Colors.blue),
-        SizedBox(
+        const Divider(height: 20, thickness: 1, color: Colors.blue),
+        const SizedBox(
           height: 5,
         ),
         buildMiscSetting(
           context,
           'Change Language',
           [
-            Text('Select a language:'),
-            SizedBox(height: 5),
+            const Text('Select a language:'),
+            const SizedBox(height: 5),
             ListTile(
-              title: Text('English'),
+              title: const Text('English'),
               onTap: () {
-                // Handle language change to English
+                Provider.of<LocaleProvider>(context, listen: false)
+                    .setLocale(const Locale('en', 'US'));
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
-              title: Text('Vietnamese'),
+              title: const Text('Vietnamese'),
               onTap: () {
-                // Handle language change to French
+                Provider.of<LocaleProvider>(context, listen: false)
+                    .setLocale(const Locale('vi', 'VN'));
                 Navigator.of(context).pop();
               },
             ),
@@ -71,24 +75,29 @@ class _SettingsPageState extends State<SettingsPage> {
           context,
           'Change Theme',
           [
-            Text('Select a theme:'),
-            SizedBox(height: 5),
-            ListTile(
-              title: Text('Light'),
-              onTap: () {
-                context.read<ThemeProvider>().changeTheme(AppTheme.light);
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              title: Text('Dark'),
-              onTap: () {
-                context.read<ThemeProvider>().changeTheme(AppTheme.dark);
-                Navigator.of(context).pop();
-              },
+            const Text('Select a theme:'),
+            const SizedBox(height: 5),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  child: const Text('Light'),
+                  onPressed: () {
+                    context.read<ThemeProvider>().changeTheme(AppTheme.light);
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text('Dark'),
+                  onPressed: () {
+                    context.read<ThemeProvider>().changeTheme(AppTheme.dark);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
             ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -99,56 +108,44 @@ class _SettingsPageState extends State<SettingsPage> {
     List<Widget> content,
   ) {
     return GestureDetector(
-        onTap: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                    title: Text(title),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: content,
-                    ),
-                    actions: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Close'))
-                    ]);
-              });
-        },
-        child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.blueGrey,
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: content,
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close'),
                 ),
               ],
-            )));
-  }
-
-  AppBar appBar() {
-    return AppBar(
-      backgroundColor: Colors.blue,
-      title: Text(
-        'Settings',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-      ),
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        color: Colors.white, // Change the color here
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
+            );
+          },
+        );
+      },
+      behavior: HitTestBehavior.translucent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.blueGrey,
+            ),
+          ],
+        ),
       ),
     );
   }

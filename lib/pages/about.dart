@@ -1,22 +1,25 @@
-import 'package:amogus/ui/rightDrawer.dart';
+import 'package:amogus/providers/theme_provider.dart';
+import 'package:amogus/ui/right_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(context),
-      backgroundColor: const Color(0xffF7F8F8),
-      endDrawer: rightDrawer(context),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          aboutUs(),
-        ],
-      ),
-    );
+    return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+      return Scaffold(
+        appBar: appBar(context),
+        endDrawer: rightDrawer(context),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            aboutUs(),
+          ],
+        ),
+      );
+    });
   }
 
   AppBar appBar(BuildContext context) {
