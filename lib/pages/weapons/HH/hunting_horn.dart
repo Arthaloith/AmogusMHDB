@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AmmosPage extends StatelessWidget {
-  const AmmosPage({super.key});
+class HuntingHornPage extends StatelessWidget {
+  const HuntingHornPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class AmmosPage extends StatelessWidget {
         backgroundColor: Colors.blue,
         body: Center(
           child: Text(
-            'Ammos Page',
+            'Monsters Page',
             style: TextStyle(fontSize: 50),
           ),
         ));

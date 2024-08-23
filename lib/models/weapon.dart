@@ -7,12 +7,12 @@ class WeapModel {
   String icon;
   int atk;
   int rarity;
-  String sharpness_r;
-  String sharpness_o;
-  String sharpness_y;
-  String sharpness_g;
-  String sharpness_b;
-  String sharpness_w;
+  String sharpnessR;
+  String sharpnessO;
+  String sharpnessY;
+  String sharpnessG;
+  String sharpnessB;
+  String sharpnessW;
   String type;
   Color boxColor;
   bool viewIsSelected;
@@ -22,12 +22,12 @@ class WeapModel {
     required this.icon,
     required this.atk,
     required this.rarity,
-    required this.sharpness_r,
-    required this.sharpness_o,
-    required this.sharpness_y,
-    required this.sharpness_g,
-    required this.sharpness_b,
-    required this.sharpness_w,
+    required this.sharpnessR,
+    required this.sharpnessO,
+    required this.sharpnessY,
+    required this.sharpnessG,
+    required this.sharpnessB,
+    required this.sharpnessW,
     required this.type,
     this.boxColor = const Color.fromRGBO(0, 0, 0, 1), // default black color
     required this.viewIsSelected,
@@ -49,12 +49,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Long_Sword/Long_Sword_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Long Sword',
         viewIsSelected: true));
 
@@ -63,12 +63,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Dual_Blades/Dual_Blades_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Dual Blade',
         viewIsSelected: false));
 
@@ -77,12 +77,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Sword_&_Shield/Sword_&_Shield_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Sword & Shield',
         viewIsSelected: false));
 
@@ -91,12 +91,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Gunlance/Gunlance_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Gunlance',
         viewIsSelected: false));
 
@@ -105,12 +105,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Lance/Lance_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Lance',
         viewIsSelected: false));
 
@@ -119,12 +119,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Hunting_Horn/Hunting_Horn_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Hunting Horn',
         viewIsSelected: false));
 
@@ -133,12 +133,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Switch_Axe/Switch_Axe_Rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Switch Axe',
         viewIsSelected: false));
 
@@ -147,12 +147,12 @@ class WeapModel {
         icon: 'assets/icons/WeapRank/Charge_Blade/Charge_Blade_rank_07.svg',
         atk: 170,
         rarity: 7,
-        sharpness_r: 'assets/icons/WeapSharp/red.svg',
-        sharpness_o: 'assets/icons/WeapSharp/orange.svg',
-        sharpness_y: 'assets/icons/WeapSharp/yellow.svg',
-        sharpness_g: 'assets/icons/WeapSharp/green.svg',
-        sharpness_b: 'assets/icons/WeapSharp/blue.svg',
-        sharpness_w: 'assets/icons/WeapSharp/white.svg',
+        sharpnessR: 'assets/icons/WeapSharp/red.svg',
+        sharpnessO: 'assets/icons/WeapSharp/orange.svg',
+        sharpnessY: 'assets/icons/WeapSharp/yellow.svg',
+        sharpnessG: 'assets/icons/WeapSharp/green.svg',
+        sharpnessB: 'assets/icons/WeapSharp/blue.svg',
+        sharpnessW: 'assets/icons/WeapSharp/white.svg',
         type: 'Charge Blade',
         viewIsSelected: false));
 

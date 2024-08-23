@@ -1,8 +1,18 @@
 import 'package:amogus/pages/home.dart';
+import 'package:amogus/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,8 +21,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'FiraCode'),
-        home: HomePage());
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'), // English
+        Locale('vi', 'VI'), // Vietnamese
+      ],
+      home: const HomePage(),
+      theme:
+          context.select((ThemeProvider themeProvider) => themeProvider.theme),
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CombosPage extends StatelessWidget {
-  const CombosPage({super.key});
+class LongSwordPage extends StatelessWidget {
+  const LongSwordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class CombosPage extends StatelessWidget {
         backgroundColor: Colors.blue,
         body: Center(
           child: Text(
-            'Combos Page',
+            'Monsters Page',
             style: TextStyle(fontSize: 50),
           ),
         ));
