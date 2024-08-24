@@ -52,6 +52,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
                   fadingLine(),
                   const SizedBox(height: 5),
                   weaponCategories(context),
+                  const SizedBox(height: 10),
                   fadingLine(),
                   const SizedBox(height: 30),
                   faqIsLove(),
@@ -80,52 +81,54 @@ class _WeaponsPageState extends State<WeaponsPage> {
   }
 
   Column faqIsLove() {
-    return const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: EdgeInsets.only(left: 20.0),
-        child: Text(
-          'FAQ',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: ExpansionTile(
-          title: Text('What is the best weapon for a beginner?'),
-          children: [
-            Text(
-              'The best weapon for a beginner is often subjective and depends on personal playstyle. However, the Great Sword is a popular choice for its ease of use and high damage output.',
+    return const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text(
+              'FAQ',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-          ],
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: ExpansionTile(
-          title: Text('How do I upgrade my weapon?'),
-          children: [
-            Text(
-              'To upgrade your weapon, you will need to gather materials and visit the Smithy. The Smithy can be found in the game\'s hub area.',
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: ExpansionTile(
+              title: Text('What is the best weapon for a beginner?'),
+              children: [
+                Text(
+                  'The best weapon for a beginner is often subjective and depends on personal playstyle. However, the Great Sword is a popular choice for its ease of use and high damage output.',
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: ExpansionTile(
-          title: Text(
-              'What is the difference between a Great Sword and a Long Sword?'),
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text(
-                'The Great Sword is a slower, more powerful weapon, while the Long Sword is faster and more agile. The choice between the two ultimately comes down to personal preference.',
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: ExpansionTile(
+              title: Text('How do I upgrade my weapon?'),
+              children: [
+                Text(
+                  'To upgrade your weapon, you will need to gather materials and visit the Smithy. The Smithy can be found in the game\'s hub area.',
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-    ]);
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: ExpansionTile(
+              title: Text(
+                  'What is the difference between a Great Sword and a Long Sword?'),
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Text(
+                    'The Great Sword is a slower, more powerful weapon, while the Long Sword is faster and more agile. The choice between the two ultimately comes down to personal preference.',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ]);
   }
 
   Column weaponCategories(BuildContext context) {
@@ -135,7 +138,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
       2: const SwordAndShieldPage(),
       3: const DualBladesPage(),
       4: const LancePage(),
-      5: const GunLancePage(),
+      5: const GunlancePage(),
       6: const HammerPage(),
       7: const HuntingHornPage(),
       8: const SwitchAxePage(),

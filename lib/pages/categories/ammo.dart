@@ -44,6 +44,7 @@ class _AmmosPageState extends State<AmmosPage> {
                   fadingLine(),
                   const SizedBox(height: 5),
                   ammoCaterogories(context),
+                  const SizedBox(height: 10),
                   fadingLine(),
                   const SizedBox(height: 30),
                   faqIsLove(),
