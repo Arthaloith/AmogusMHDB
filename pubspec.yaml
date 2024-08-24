@@ -31,8 +31,12 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
+    # Elements Icons
+    - assets/icons/Elements/
     - assets/icons/
+    # Types
     - assets/icons/WeapType/
+    - assets/icons/AmmoType/
     # Weapon Sharpness
     - assets/icons/WeapSharp/
     # Weapon Ranks

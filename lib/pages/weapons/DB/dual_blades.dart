@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DualBladePage extends StatelessWidget {
-  const DualBladePage({super.key});
+class DualBladesPage extends StatelessWidget {
+  const DualBladesPage({super.key});
 
   @override
   Widget build(BuildContext context) {

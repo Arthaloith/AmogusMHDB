@@ -32,8 +32,8 @@ class _ArmorsPageState extends State<ArmorsPage> {
           body: Theme(
               data: themeProvider.theme,
               child: Column(children: [
-                SearchField(),
-                SizedBox(height: 30),
+                const SearchField(),
+                const SizedBox(height: 30),
                 armorCategories(context),
               ])));
     });
@@ -41,7 +41,7 @@ class _ArmorsPageState extends State<ArmorsPage> {
 
   Column armorCategories(BuildContext context) {
     final pageMap = {
-      0: LowRankBlademasterPage(),
+      0: const LowRankBlademasterPage(),
       // 1: const ChargeBladePage(),
       // 2: const DualBladePage(),
       // 3: const GunLancePage(),

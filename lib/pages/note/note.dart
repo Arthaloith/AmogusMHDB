@@ -6,8 +6,8 @@ import 'package:amogus/pages/note/note_view.dart';
 import 'package:amogus/ui/app_bar.dart';
 import 'package:amogus/ui/right_drawer.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NoteList extends StatefulWidget {

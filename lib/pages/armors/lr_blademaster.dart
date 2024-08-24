@@ -12,7 +12,7 @@ class Armor {
 class ArmorDetailPage extends StatelessWidget {
   final Armor armor;
 
-  ArmorDetailPage({required this.armor});
+  const ArmorDetailPage({super.key, required this.armor});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,8 @@ class ArmorDetailPage extends StatelessWidget {
 
 // Define the low rank blademaster armor page
 class LowRankBlademasterPage extends StatelessWidget {
+  const LowRankBlademasterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Define the armor data
@@ -44,10 +46,10 @@ class LowRankBlademasterPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Low Rank Blademaster'),
+        title: const Text('Low Rank Blademaster'),
       ),
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1,
           crossAxisSpacing: 10,

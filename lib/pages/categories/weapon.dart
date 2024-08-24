@@ -43,32 +43,107 @@ class _WeaponsPageState extends State<WeaponsPage> {
       return Scaffold(
           appBar: customAppBar(context, 'Weapon DB'),
           endDrawer: rightDrawer(context),
-          body: Theme(
-              data: themeProvider.theme,
-              child: Column(children: [
-                SearchField(),
-                SizedBox(height: 30),
-                weaponCategories(context),
-              ])));
+          body: SingleChildScrollView(
+            child: Theme(
+                data: themeProvider.theme,
+                child: Column(children: [
+                  const SearchField(),
+                  const SizedBox(height: 30),
+                  fadingLine(),
+                  const SizedBox(height: 5),
+                  weaponCategories(context),
+                  fadingLine(),
+                  const SizedBox(height: 30),
+                  faqIsLove(),
+                  const SizedBox(height: 30),
+                ])),
+          ));
     });
+  }
+
+  Container fadingLine() {
+    return Container(
+      height: 1, // adjust the height to your liking
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          stops: [0, 0.5, 12],
+          colors: [
+            Colors.transparent,
+            Colors.grey, // adjust the color to your liking
+            Colors.transparent,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column faqIsLove() {
+    return const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: EdgeInsets.only(left: 20.0),
+        child: Text(
+          'FAQ',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: ExpansionTile(
+          title: Text('What is the best weapon for a beginner?'),
+          children: [
+            Text(
+              'The best weapon for a beginner is often subjective and depends on personal playstyle. However, the Great Sword is a popular choice for its ease of use and high damage output.',
+            ),
+          ],
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: ExpansionTile(
+          title: Text('How do I upgrade my weapon?'),
+          children: [
+            Text(
+              'To upgrade your weapon, you will need to gather materials and visit the Smithy. The Smithy can be found in the game\'s hub area.',
+            ),
+          ],
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: ExpansionTile(
+          title: Text(
+              'What is the difference between a Great Sword and a Long Sword?'),
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text(
+                'The Great Sword is a slower, more powerful weapon, while the Long Sword is faster and more agile. The choice between the two ultimately comes down to personal preference.',
+              ),
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 
   Column weaponCategories(BuildContext context) {
     final pageMap = {
-      0: const BowPage(),
-      1: const ChargeBladePage(),
-      2: const DualBladePage(),
-      3: const GunLancePage(),
-      4: const GreatSwordPage(),
-      5: const HeavyBowGunPage(),
-      6: const HuntingHornPage(),
-      7: const HammerPage(),
-      8: const InsectGlaivePage(),
-      9: const LightBowGunPage(),
-      10: const LancePage(),
-      11: const LongSwordPage(),
-      12: const SwitchAxePage(),
-      13: const SwordAndShieldPage()
+      0: const GreatSwordPage(),
+      1: const LongSwordPage(),
+      2: const SwordAndShieldPage(),
+      3: const DualBladesPage(),
+      4: const LancePage(),
+      5: const GunLancePage(),
+      6: const HammerPage(),
+      7: const HuntingHornPage(),
+      8: const SwitchAxePage(),
+      9: const ChargeBladePage(),
+      10: const InsectGlaivePage(),
+      11: const LightBowGunPage(),
+      12: const HeavyBowGunPage(),
+      13: const BowPage()
     };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -88,8 +88,11 @@ class _MonsterPageState extends State<MonstersPage> {
                         Text(
                           monsterTypes[index].name,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.black,
+                          style: TextStyle(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
                               fontSize: 14,
                               fontWeight: FontWeight.normal),
                         )

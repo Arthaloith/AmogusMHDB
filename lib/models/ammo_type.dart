@@ -13,32 +13,32 @@ class AmmoTypeModel {
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Attack',
-      icon: 'assets/icons/WeapType/GS.svg',
+      icon: 'assets/icons/AmmoType/attack.svg',
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Elemental',
-      icon: 'assets/icons/WeapType/LS.svg',
+      icon: 'assets/icons/AmmoType/elemental.svg',
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Status-Affliction',
-      icon: 'assets/icons/WeapType/SNS.svg',
+      icon: 'assets/icons/AmmoType/status_affliction.svg',
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Support',
-      icon: 'assets/icons/WeapType/DB.svg',
+      icon: 'assets/icons/AmmoType/support.svg',
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Fortress',
-      icon: 'assets/icons/WeapType/LN.svg',
+      icon: 'assets/icons/AmmoType/fortress.svg',
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Bow Coating',
-      icon: 'assets/icons/WeapType/GL.svg',
+      icon: 'assets/icons/AmmoType/coating.svg',
     ));
 
     return ammoTypes;
