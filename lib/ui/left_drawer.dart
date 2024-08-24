@@ -65,8 +65,20 @@ Widget _buildChangelog() {
 Widget _buildVersions() {
   return Column(
     children: [
-      _buildVersion('0.1', ['stuffs added idk lol', 'stuffs also fixed lol']),
+      _buildVersion('0.1.0', ['Added themes', 'stuffs fixed']),
       const SizedBox(height: 8),
+      _buildVersion(
+        '0.1.1',
+        ['added noting feature lol'],
+      ),
+      _buildVersion(
+        '0.1.2',
+        ['added import and export notes feature'],
+      ),
+      _buildVersion(
+        '0.1.2.1',
+        ['catgory pages preparation'],
+      ),
       _buildNews(),
     ],
   );
@@ -134,4 +146,6 @@ Widget _buildNews() {
 
 List<String> newsItems = [
   'August 23rd - Hello World!',
+  'August 24th - Lol so I added Note utility because why not amirite guys?',
+  'August 25th - At this point it is more of a note taking app than a DB app lmao',
 ];

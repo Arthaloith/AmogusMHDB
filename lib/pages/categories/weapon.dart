@@ -15,6 +15,8 @@ import 'package:amogus/pages/weapons/SA/switch_axe.dart';
 import 'package:amogus/pages/weapons/SNS/sword_and_shield.dart';
 import 'package:amogus/providers/theme_provider.dart';
 import 'package:amogus/ui/app_bar.dart';
+import 'package:amogus/ui/right_drawer.dart';
+import 'package:amogus/ui/search_field.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,9 +42,14 @@ class _WeaponsPageState extends State<WeaponsPage> {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return Scaffold(
           appBar: customAppBar(context, 'Weapon DB'),
-          body: Center(
-            child: weaponCategories(context),
-          ));
+          endDrawer: rightDrawer(context),
+          body: Theme(
+              data: themeProvider.theme,
+              child: Column(children: [
+                SearchField(),
+                SizedBox(height: 30),
+                weaponCategories(context),
+              ])));
     });
   }
 
@@ -69,22 +76,35 @@ class _WeaponsPageState extends State<WeaponsPage> {
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Text(
-            'Categories',
+            'Weapon Types',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(left: 22.0),
+          child: Text(
+            '(scroll to reveal more)',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.w200,
+                fontSize: 12), // You can adjust the style as needed
+          ),
+        ),
         const SizedBox(height: 20),
         SizedBox(
-            height: 120,
-            child: ListView.separated(
-              itemCount: WeaponTypeModel.getWeaponTypeModel().length,
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              separatorBuilder: (context, index) => const SizedBox(width: 25),
-              itemBuilder: (context, index) {
+          height: 240, // Increase the height to accommodate two rows
+          child: GridView.count(
+            crossAxisCount: 2, // Two columns
+            childAspectRatio: 1.0, // Square-shaped icons
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            crossAxisSpacing: 25,
+            mainAxisSpacing: 20,
+            children: List.generate(
+              WeaponTypeModel.getWeaponTypeModel().length,
+              (index) {
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -93,7 +113,6 @@ class _WeaponsPageState extends State<WeaponsPage> {
                     );
                   },
                   child: Container(
-                    width: 100,
                     decoration: BoxDecoration(
                       color: WeaponTypeModel.getWeaponTypeModel()[index]
                           .boxColor
@@ -118,17 +137,23 @@ class _WeaponsPageState extends State<WeaponsPage> {
                         Text(
                           weaponTypes[index].name,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
                         )
                       ],
                     ),
                   ),
                 );
               },
-            ))
+            ),
+          ),
+        )
       ],
     );
   }

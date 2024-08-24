@@ -1,9 +1,11 @@
 import 'package:amogus/pages/about.dart';
 import 'package:amogus/pages/home.dart';
+import 'package:amogus/pages/note/note.dart';
 import 'package:amogus/pages/settings.dart';
 import 'package:amogus/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget rightDrawer(BuildContext context) {
   final themeProvider = Provider.of<ThemeProvider>(context);
@@ -38,6 +40,15 @@ Widget rightDrawer(BuildContext context) {
           },
         ),
         ListTile(
+          leading: const Icon(Icons.note),
+          title: const Text('Note'),
+          onTap: () async {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const NoteList(),
+            ));
+          },
+        ),
+        ListTile(
           leading: const Icon(Icons.settings),
           title: const Text('Settings'),
           onTap: () async {
@@ -59,11 +70,17 @@ Widget rightDrawer(BuildContext context) {
           leading: const Icon(Icons.source),
           title: const Text('Source'),
           onTap: () async {
-            // const url = 'https://github.com/Arthaloith';
-            // launchURL(url);
+            const url = 'https://monsterhunter.fandom.com/wiki';
+            if (await canLaunchUrl(Uri.parse(url))) {
+              await launchUrl(Uri.parse(url));
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Could not open link')),
+              );
+            }
           },
         ),
       ],
-    ), // Your drawer content
+    ),
   );
 }
