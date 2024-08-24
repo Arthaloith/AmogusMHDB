@@ -89,8 +89,11 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 weaps[index].name,
-                                style: const TextStyle(
-                                    color: Colors.black,
+                                style: TextStyle(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -217,8 +220,11 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           categories[index].name,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.black,
+                          style: TextStyle(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
                               fontSize: 14,
                               fontWeight: FontWeight.normal),
                         )

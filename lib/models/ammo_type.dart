@@ -6,39 +6,45 @@ class AmmoTypeModel {
   Color boxColor;
 
   AmmoTypeModel(
-      {required this.name, required this.icon, this.boxColor = Colors.white});
+      {required this.name, required this.icon, required this.boxColor});
 
   static List<AmmoTypeModel> getAmmoTypeModel() {
     List<AmmoTypeModel> ammoTypes = [];
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Attack',
-      icon: 'assets/icons/WeapType/GS.svg',
+      icon: 'assets/icons/AmmoType/attack.svg',
+      boxColor: const Color.fromARGB(255, 131, 243, 139),
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Elemental',
-      icon: 'assets/icons/WeapType/LS.svg',
+      icon: 'assets/icons/AmmoType/elemental.svg',
+      boxColor: Colors.lightBlue,
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Status-Affliction',
-      icon: 'assets/icons/WeapType/SNS.svg',
+      icon: 'assets/icons/AmmoType/status_affliction.svg',
+      boxColor: Colors.purple,
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Support',
-      icon: 'assets/icons/WeapType/DB.svg',
+      icon: 'assets/icons/AmmoType/support.svg',
+      boxColor: Colors.green,
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Fortress',
-      icon: 'assets/icons/WeapType/LN.svg',
+      icon: 'assets/icons/AmmoType/fortress.svg',
+      boxColor: Colors.grey,
     ));
 
     ammoTypes.add(AmmoTypeModel(
       name: 'Bow Coating',
-      icon: 'assets/icons/WeapType/GL.svg',
+      icon: 'assets/icons/AmmoType/coating.svg',
+      boxColor: const Color.fromARGB(255, 242, 119, 119),
     ));
 
     return ammoTypes;

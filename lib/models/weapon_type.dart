@@ -63,7 +63,7 @@ class WeaponTypeModel {
 
     weaponTypes.add(WeaponTypeModel(
       name: 'Insect Glaive',
-      icon: 'assets/icons/Categories/Weapons.svg',
+      icon: 'assets/icons/WeapType/IG.svg',
     ));
 
     weaponTypes.add(WeaponTypeModel(
