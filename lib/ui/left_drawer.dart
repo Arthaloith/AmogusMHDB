@@ -77,7 +77,18 @@ Widget _buildVersions() {
       ),
       _buildVersion(
         '0.1.2.1',
-        ['catgory pages preparation'],
+        ['catgory screen preparation'],
+      ),
+      _buildVersion(
+        '0.3.0',
+        ['added template screens for weapon and ammo categories'],
+      ),
+      _buildVersion(
+        '0.4.0',
+        [
+          'added template screens for armor categories',
+          'added Feedback submition feature'
+        ],
       ),
       _buildNews(),
     ],

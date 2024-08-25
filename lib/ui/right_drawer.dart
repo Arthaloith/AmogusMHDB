@@ -1,4 +1,5 @@
 import 'package:amogus/pages/about.dart';
+import 'package:amogus/pages/feedback.dart';
 import 'package:amogus/pages/home.dart';
 import 'package:amogus/pages/note/note.dart';
 import 'package:amogus/pages/settings.dart';
@@ -63,6 +64,15 @@ Widget rightDrawer(BuildContext context) {
           onTap: () async {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const AboutPage(),
+            ));
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.feedback),
+          title: const Text('Feedback'),
+          onTap: () async {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FeedbackPage(),
             ));
           },
         ),

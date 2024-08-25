@@ -21,6 +21,9 @@ dependencies:
   path_provider: ^2.1.4
   file_picker: ^8.1.2
   permission_handler: ^11.3.1
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +51,16 @@ flutter:
     - assets/icons/WeapRank/Lance/
     - assets/icons/WeapRank/Hunting_Horn/
     - assets/icons/WeapRank/Switch_Axe/
+    # Armor Sets
+    - assets/ArmorSets/
+    - assets/ArmorSets/LR/
+    - assets/ArmorSets/HR/
+    - assets/ArmorSets/LR/Blademaster/
+    - assets/ArmorSets/HR/Blademaster/
+    - assets/ArmorSets/LR/Gunner/
+    - assets/ArmorSets/HR/Gunner/
+    # Armor Icons
+    - assets/icons/ArmorType/
     # Categories Icons
     - assets/icons/Categories/
     # Gifs
