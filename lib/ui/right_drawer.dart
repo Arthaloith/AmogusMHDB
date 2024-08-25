@@ -1,9 +1,11 @@
+import 'package:amogus/admin.dart';
 import 'package:amogus/pages/about.dart';
 import 'package:amogus/pages/feedback.dart';
 import 'package:amogus/pages/home.dart';
 import 'package:amogus/pages/note/note.dart';
 import 'package:amogus/pages/settings.dart';
 import 'package:amogus/providers/theme_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -87,6 +89,37 @@ Widget rightDrawer(BuildContext context) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Could not open link')),
               );
+            }
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.admin_panel_settings),
+          title: const Text('Admin'),
+          onTap: () async {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => AdminLoginScreen(),
+            ));
+          },
+        ),
+        StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.userChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text('Logout'),
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('You have been logged out')),
+                  );
+                },
+              );
+            } else {
+              return Container();
             }
           },
         ),
